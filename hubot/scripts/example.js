@@ -12,7 +12,7 @@
 module.exports = (robot) => {
 
   robot.hear(/what time now/i, (res) => { 
-    res.send("Time is " + Date())
+    res.send("Time is " + (new Date).toTimeString().slice(0,8))
   })
    
   robot.hear(/Hi my name is (.*)/i, (res) => { 
