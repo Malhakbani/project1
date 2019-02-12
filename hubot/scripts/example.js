@@ -9,8 +9,22 @@
 //   Uncomment the ones you want to try and experiment with.
 //
 //   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
-
 module.exports = (robot) => {
+
+  robot.hear(/what time now/i, (res) => { 
+    res.send("Time is " + Date())
+  })
+   
+  robot.hear(/Hi my name is (.*)/i, (res) => { 
+    const name = res.match[1]
+    res.send(`Hi ${name} nice to meet you`)
+  })
+
+  const meal = ['Burger', 'Rice', 'Kabsa']
+
+  robot.hear(/I'am hungry/i, (res) => { 
+    res.send("What would you like to eat, we have " + `${meal}` )
+  })
 
   robot.hear(/badger/i, (res) => {
     res.send('Badgers? BADGERS? WE DON’T NEED NO STINKIN BADGERS')
@@ -28,9 +42,9 @@ module.exports = (robot) => {
   })
   
   robot.hear(/I like pie/i, (res) => {
-    res.emote('makes a freshly baked pie')
+    res.emote('makes a freshly baked pie' + Date())
   })
-  
+
   const lulz = ['lol', 'rofl', 'lmao']
   
   robot.respond(`/${lulz.join('|')}/i`, (res) => {
@@ -127,3 +141,5 @@ module.exports = (robot) => {
     res.reply('zzzzz')
   })
 }
+
+
